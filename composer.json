@@ -1,0 +1,15 @@
+{
+    "name": "danieljlewis/simple-json-shortcode",
+    "type": "wordpress-plugin",
+    "description": "",
+    "authors": [
+        {
+            "name": "Daniel J. Lewis",
+            "email": "mail@TheAudacitytoPodcast.com"
+        }
+    ],
+    "require": {
+        "padraic/humbug_get_contents": "^1.1",
+        "symfony/property-access": "^4.4"
+    }  
+}

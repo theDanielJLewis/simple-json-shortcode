@@ -2,46 +2,49 @@
 /**
  * Link shortcode
  *
- * Write [link] in your post editor to render this shortcode.
+ * Write [sjsons] in your post editor to render this shortcode.
  *
- * @package	 ABS
  * @since    1.0.0
  */
 
-if ( ! function_exists( 'aa_link_shortcode' ) ) {
+use Symfony\Component\PropertyAccess\PropertyAccess;
+
+if ( ! function_exists( 'sjsons_shortcode' ) ) {
 	// Add the action.
 	add_action( 'plugins_loaded', function() {
 		// Add the shortcode.
-		add_shortcode( 'link', 'aa_link_shortcode' );
+		add_shortcode( 'sjsons', 'sjsons_shortcode' );
 	});
-
+	
 	/**
 	 * Shortcode Function
 	 *
-	 * @param  Attributes $atts l|t URL TEXT.
+	 * @param  Attributes $atts url|path URL PATH.
 	 * @return string
 	 * @since  1.0.0
 	 */
-	function aa_link_shortcode( $atts ) {
-		// Text Default.
-		$text_default = __( 'About Me', 'ABS' );
-
-		// Save $atts.
+	function sjsons_shortcode( $atts ) {
+		$propertyAccessor = PropertyAccess::createPropertyAccessor();
+		
+		// Save $atts
 		$_atts = shortcode_atts( array(
-			'u'  => '/',           // URL.
-			't'  => $text_default, // Text.
+			'url'  => '',
+			'path'  => '',
 		), $atts );
 
-		// URL.
-		$_url = $_atts['u'];
+		// URL
+		$url = $_atts['url'];
 
-		// Text.
-		$_text = $_atts['t'];
+		$data = json_decode(Humbug\get_contents($url));
 
-		// Return it, Safe in PHP 7.0.
-		$_return = '<a href="' . $_url . '"> ' . $_text . ' </a>';
+		// Path
+		$_atts['path'] = preg_replace("/\.?(\d+)/", "[$1]",$_atts['path']);
+		$_atts['path'] = preg_replace("/(\d+)\./", "[$1].",$_atts['path']);
+		// $path = $_atts['path'];
+		$path = $_atts['path'];
+		$result = $propertyAccessor->getValue($data, $path); // 'Wouter'
 
-		// Return the data.
-		return $_return;
+		// Return the data
+		return $result;
 	}
 } // End if().
