@@ -42,28 +42,10 @@ if ( ! defined( 'SJSONS_URL' ) ) {
 require (__DIR__ . '/vendor/autoload.php');
 
 /**
- * Link.
+ * sjsons.
  *
  * @since 1.0.0
  */
-if ( file_exists( SJSONS_DIR . '/shortcode/shortcode-link.php' ) ) {
-	require_once( SJSONS_DIR . '/shortcode/shortcode-link.php' );
-}
-
-/**
- * Member.
- *
- * @since 1.0.0
- */
-if ( file_exists( SJSONS_DIR . '/shortcode/shortcode-member.php' ) ) {
-	require_once( SJSONS_DIR . '/shortcode/shortcode-member.php' );
-}
-
-/**
- * Adsense.
- *
- * @since 1.0.0
- */
-if ( file_exists( SJSONS_DIR . '/shortcode/shortcode-adsense.php' ) ) {
-	require_once( SJSONS_DIR . '/shortcode/shortcode-adsense.php' );
+if ( file_exists( SJSONS_DIR . '/shortcode/shortcode-sjsons.php' ) ) {
+	require_once( SJSONS_DIR . '/shortcode/shortcode-sjsons.php' );
 }
