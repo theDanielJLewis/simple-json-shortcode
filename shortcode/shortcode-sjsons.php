@@ -42,7 +42,12 @@ if ( ! function_exists( 'sjsons_shortcode' ) ) {
 		$_atts['path'] = preg_replace("/(\d+)\./", "[$1].",$_atts['path']);
 		// $path = $_atts['path'];
 		$path = $_atts['path'];
-		$result = $propertyAccessor->getValue($data, $path); // 'Wouter'
+
+		try {
+			$result = $propertyAccessor->getValue($data, $path);
+		} catch (Exception $e) {
+			$result = 'Invalid JSON data, double-check your URL, path, and that you are linking to valid JSON';
+		}
 
 		// Return the data
 		return $result;
