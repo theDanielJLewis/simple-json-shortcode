@@ -35,6 +35,10 @@ if ( ! function_exists( 'sjsons_shortcode' ) ) {
 		// URL
 		$url = $_atts['url'];
 
+		Humbug\set_headers([
+			'API-Key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjEsInN0YXR1cyI6ImFjdGl2ZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYwNTE1MzMwNX0.l0hQvP5g06_lyQROaTUldpf8VrArYZuN-Vp-M4T3Pgk'
+		]);
+
 		$data = json_decode(Humbug\get_contents($url));
 
 		// Path

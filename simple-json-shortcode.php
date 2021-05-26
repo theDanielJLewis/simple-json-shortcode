@@ -3,7 +3,7 @@
  * Plugin Name:       Simple JSON Shortcode
  * Plugin URI:        http://ahmadawais.com/coding-a-basic-shortcodes-plugin-boilerplate/
  * Description:       Coding shortcodes in a plugin with maintainable code practices.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Daniel J. Lewis
  * Author URI:        https://theaudacitytopodcast.com/
  * License:           GPL-2.0+
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 // Plugin version.
 if ( ! defined( 'SJSONS_VERSION' ) ) {
-	define( 'SJSONS_VERSION', '1.0.1' );
+	define( 'SJSONS_VERSION', '1.0.2' );
 }
 
 if ( ! defined( 'SJSONS_NAME' ) ) {
